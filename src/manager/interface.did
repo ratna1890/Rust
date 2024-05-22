@@ -1,0 +1,7 @@
+type InitPayload = record { backend_1 : text; backend_2 : text };
+service : (InitPayload) -> {
+  get_principal_texts : () -> (text, text) query;
+  get_principals : () -> (principal, principal) query;
+  set_principal_texts : (text, text) -> ();
+  upgrade_backends : () -> ();
+}

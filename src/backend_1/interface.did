@@ -1,0 +1,17 @@
+type RejectionCode = variant {
+  NoError;
+  CanisterError;
+  SysTransient;
+  DestinationInvalid;
+  Unknown;
+  SysFatal;
+  CanisterReject;
+};
+type Result = variant { Ok; Err : record { RejectionCode; text } };
+service : (principal, principal, principal) -> {
+  add_controller : (principal) -> (Result);
+  get_player : () -> (text, nat32) query;
+  greet : (text) -> (text) query;
+  greet_with_msg : (text, text) -> (text) query;
+  set_player : (text, nat32) -> ();
+}
